@@ -1,0 +1,41 @@
+
+
+/**
+ * This call is a algorithm/feature which expends or implemnts EligibilityStrategy.
+ * This class should override the methods present in EligibilityStrategy and give the unique 
+ * implementation. 
+ * Class has the @Component annotaion
+ */
+@Component
+public class AlgorithmOrFeatureEligibilityStrategy extends EligibilityStrategy {
+
+    @Autowired
+    public AlgorithmOrFeatureEligibilityStrategy() {
+        
+    }
+
+    /**
+     * 
+     * 
+     * @return 
+     */
+    @Override
+    public boolean checkEligibility(String policyNumber) {
+
+    /**
+     * Unique implementation here
+     * 
+     */
+    }
+
+    /**
+     * Determine if strategy is applicable to feature
+     * 
+     * @return The feature name
+     */
+    @Override
+    public String supportedFeature() {
+        return "NAME-OF-THE-ALGORITHM/FEATURE";
+    }
+
+}

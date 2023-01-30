@@ -1,0 +1,41 @@
+
+/**
+ * <p>
+ * Factory for determining the strategy to use for checking the Algorithm/Feature.
+ * This acts as factory class. Use of this class is to determine which Algorithm/Feature is eligible from variuos * Algorithms/Features with the input given by driver program.
+ * Since we @Autowired the EligibilityStrategy interface, so we have objects of implementing class of *EligibilityStrategy interface.
+ * 
+ * </p>
+ *
+ */
+@Component
+public class EligibilityStrategyFactory {
+
+    @Autowired
+    private List<EligibilityStrategy> strategies;
+
+    /**
+     * Default constructor
+     * 
+     * @param strategies
+     *            Eligibility strategies
+     */
+    public EligibilityStrategyFactory(List<EligibilityStrategy> strategies) {
+        this.strategies = Collections.unmodifiableList(strategies);
+    }
+
+    /**
+     * Get the strategy for a feature that will check the eligibility
+     * 
+     * @param feature
+     * @return Eligibility strategy
+     */
+    public EligibilityStrategy getEligibilityStrategy(String feature) {
+        for (EligibilityStrategy strategy : strategies) {
+            if (feature.equals(strategy.supportedFeature())) {
+                return strategy;
+            }
+        }
+        throw new GeneralApplicationException("Could not find strategy for the feature: " + feature);
+    }
+}

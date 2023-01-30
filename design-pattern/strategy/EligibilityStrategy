@@ -1,0 +1,27 @@
+
+
+/**
+ * <p>
+ * Interface for all strategies.
+ * This can either be interface or abstract class.
+ * Algorithms/features has to implement/extends this interface/class respectively
+ * </p>
+ * 
+ */
+abstract public class EligibilityStrategy {
+
+    /**
+     * method declaration
+     * 
+     * @return 
+     */
+    public abstract boolean checkEligibility(String policyNumber);
+
+    /**
+     * method declaration
+     * 
+     * @return 
+     */
+    public abstract String supportedFeature();
+
+}
