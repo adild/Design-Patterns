@@ -1,0 +1,3 @@
+start with DriverClass.
+AlgorithmOrFeatureEligibilityStrategy and SecondAlgorithmOrFeatureEligibilityStrategy(there can be n number of these classes) are the impleneting clases of EligibilityStrategy interface.
+EligibilityStrategyFactory is the one which determines the eligible Algorithm.

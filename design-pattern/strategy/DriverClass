@@ -1,0 +1,48 @@
+
+/**
+ * <p>
+ * Driver class
+ * </p>
+ * 
+ */
+@Service
+public class DriverClass {
+
+    private final EligibilityStrategyFactory eligibilityStrategyFactory;
+
+    @Autowired
+    public DriverClass(EligibilityStrategyFactory eligibilityStrategyFactory) {
+        this.eligibilityStrategyFactory = eligibilityStrategyFactory;
+    }
+
+    /**
+     * Checks for eligible features from SOME-PLACE as well as individual feature's strategy classes
+     * 
+     * 
+     * @return Eligible feature
+     */
+    @Override
+    public Optional<UserNagFeature> checkEligibilityForAll() {
+
+        selectFeature = ""SOMW-PLACE-FROM-WHERE-ALL-FEATURES-ARE-COMMING;
+
+        // Passing features selected from SOME-PLACE to strategy pattern one-by-one.
+        if (selectFeature.isPresent()) {
+            for (Feature feature : selectFeature.get()) {
+			
+				// Here we call getEligibilityStrategy() to get the feature which is mathcing with the parameter.
+				// Then by method chaining checkEligibility() is called. 
+				// Every feature clas has its own version of checkEligibility() method. The reason corrrect //checkEligibility() is called because getEligibilityStrategy() has the correct feature.
+                  boolean isEligible = eligibilityStrategyFactory.getEligibilityStrategy(feature.getFeature())
+                        .checkEligibility(policyNumber);
+
+                if (isEligible) {
+                    return Optional.fromNullable(feature);
+                }
+            }
+        }
+
+        return Optional.absent();
+    }
+
+}
